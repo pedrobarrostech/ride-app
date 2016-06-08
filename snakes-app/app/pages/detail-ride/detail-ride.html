@@ -1,0 +1,27 @@
+<ion-navbar *navbar>
+	<ion-buttons start>
+		<button (click)="cancel()"><ion-icon name="close"></ion-icon></button>
+	</ion-buttons>
+	<ion-title>Reservar</ion-title>
+</ion-navbar>
+
+<ion-content padding class="detail-car">
+  <ion-list>
+
+		<ion-item>
+				<ion-thumbnail item-left>
+					<img src="{{car.picture}}"/>
+				</ion-thumbnail>
+
+				<h2>{{car.name}}</h2>
+				<p>{{car.model}} ∙ {{car.sign}} ∙ {{car.type}}</p>
+		</ion-item>
+
+		<ion-item>
+		  <ion-label floating>Quantidade de Passageiros:</ion-label>
+		  <ion-input type="number" [(ngModel)]="req.passengers"></ion-input>
+		</ion-item>
+  </ion-list>
+
+  <button block primary (click)="save(req)">Salvar</button>
+</ion-content>

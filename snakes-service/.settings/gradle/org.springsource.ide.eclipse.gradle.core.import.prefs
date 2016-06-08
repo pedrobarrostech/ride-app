@@ -1,0 +1,13 @@
+#org.springsource.ide.eclipse.gradle.core.preferences.GradleImportPreferences
+<<<<<<< HEAD
+#Sat Apr 16 15:24:53 BRT 2016
+=======
+#Sat Apr 16 13:55:45 BRT 2016
+>>>>>>> 457fad1b8eddff5a31a846bef019ab9fd23037c9
+addResourceFilters=true
+afterTasks=afterEclipseImport;
+beforeTasks=cleanEclipse;eclipse;
+enableAfterTasks=true
+enableBeforeTasks=true
+enableDependendencyManagement=true
+projects=;

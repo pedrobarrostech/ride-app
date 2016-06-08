@@ -1,0 +1,44 @@
+<ion-navbar *navbar>
+  <ion-title>Carros</ion-title>
+</ion-navbar>
+
+<ion-content>
+  <ion-list>
+    <ion-item>
+		  <ion-label fixed>Data/Hora Aquisição:</ion-label>
+			<ion-input type="datetime-local" required [(ngModel)]="initialReservationDate" (input)="checkInputs()"></ion-input>
+  	</ion-item>
+
+		<ion-item>
+		  <ion-label fixed>Data/Hora Devolução:</ion-label>
+			<ion-input type="datetime-local" required [(ngModel)]="finalReservationDate" (input)="checkInputs()"></ion-input>
+  	</ion-item>
+
+    <div padding>
+      <button block primary [attr.disabled]="(false) ? '' : null" (click)="filter()">Buscar</button>
+    </div>
+
+    <ion-item-group>
+      <div *ngIf="cars">
+        <ion-item-divider light>Carros</ion-item-divider>
+        <ion-item *ngFor="#car of cars" (click)="reserve(car, 'car')">
+          <ion-avatar item-left>
+            <img src="{{car.picture}}">
+          </ion-avatar>
+          <h2>{{car.name}}</h2>
+        </ion-item>
+      </div>
+
+      <div *ngIf="rides">
+        <ion-item-divider light>Carona</ion-item-divider>
+        <ion-item *ngFor="#ride of rides" (click)="reserve(ride, 'ride')">
+          <ion-avatar item-left>
+            <img src="{{ride.picture}}">
+          </ion-avatar>
+          <h2>{{ride.name}}</h2>
+          <p>Ugh. As if.</p>
+        </ion-item>
+      </div>
+    </ion-item-group>
+  </ion-list>
+</ion-content>

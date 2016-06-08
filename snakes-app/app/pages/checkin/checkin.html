@@ -1,0 +1,58 @@
+<ion-navbar *navbar>
+	<ion-buttons start>
+		<button (click)="cancel()"><ion-icon name="close"></ion-icon></button>
+	</ion-buttons>
+  <ion-title>
+    Check-in
+  </ion-title>
+</ion-navbar>
+
+<ion-content style="text-align: center;">
+  <div padding>
+    <ion-segment [(ngModel)]="pet">
+      <ion-segment-button value="avarias">
+        Avarias
+      </ion-segment-button>
+      <ion-segment-button value="items">
+        Items
+      </ion-segment-button>
+    </ion-segment>
+  </div>
+
+  <div [ngSwitch]="pet">
+    <ion-list *ngSwitchWhen="'avarias'">
+      <img src="images/car-checklist.png" height="{{carHeight}}" (click)="handleClick($event)" />
+
+      <span *ngFor="#damage of damages">
+        <dot left="{{damage.left}}" top="{{damage.top}}" text="{{damage.text}}"></dot>
+      </span>
+
+      <ion-list>
+        <ion-item-sliding *ngFor="#damage of damages">
+          <ion-item>
+            {{damage.description}}
+          </ion-item>
+          <ion-item-options>
+            <button danger (click)="removeDamage(damage)">
+              <ion-icon name="trash"></ion-icon>
+              Remover
+            </button>
+          </ion-item-options>
+        </ion-item-sliding>
+      </ion-list>
+    </ion-list>
+
+    <div *ngSwitchWhen="'items'">
+      <ion-list>
+        <ion-item *ngFor="#item of items">
+          <ion-label>{{item.text}}</ion-label>
+          <ion-toggle checked="false" (click)="changeItem($event, item)"></ion-toggle>
+        </ion-item>
+      </ion-list>
+
+      <div padding>
+        <button primary block (click)="save()">Salvar</button>
+      </div>
+    </div>
+  </div>
+</ion-content>
